@@ -21,8 +21,8 @@
 
 		<div id="myDropdown" class="dropdown-content">
 			 <a href="admin.php">Staff</a>
-			 <a href="creative.html">Creative Corner</a>
-			 <a href="managecalendar.php">Calender</a>
+			 <a href="gallery.php">Gallery</a>
+			 <a href="managecalendar.php">Calendar</a>
 			 <a class="active" href="managenotification.php">Notification</a>
 			 <a href="logout.php">Log Out</a>
 		</div>
@@ -41,8 +41,8 @@
 		<div id="wrap">
 			<ul>
 			  <li><a href="admin.php">Staff</a></li>
-			  <li><a href="creative.html">Creative Corner</a></li>
-			  <li><a href="managecalendar.php">Calender</a></li>
+			  <li><a href="gallery.php">Gallery</a></li>
+			  <li><a href="managecalendar.php">Calendar</a></li>
 			  <li><a class="active" href="managenotification.php">Notification</a></li>
 			  <li><a href="logout.php">Log Out</a></li>
 			</ul>
@@ -69,9 +69,9 @@
 								# code...
 								$calendar = false;
 							} else{
-								$date =  $_GET['notification'];
+								$id =  $_GET['notification'];
 
-								$select_notification = "SELECT * FROM notification WHERE day = '".$date."'";
+								$select_notification = "SELECT * FROM notification WHERE id = ".$id;
 													 
 								$notification = mysqli_query($connection, $select_notification) or die(mysqli_error($connection));
 								$count = mysqli_num_rows($notification);
@@ -107,11 +107,11 @@
 									<a href="managenotification.php">
 										<button class = "submit" style = "background-color:green;color:white;border-radius:5px;">Go Back</button>
 									</a>
-									<a href="deletenotification.php?notification=<?php echo $notification['day']; ?>">
+									<a href="deletenotification.php?notification=<?php echo $notification['id']; ?>">
 										<button class = "submit" style = "background-color:green;color:white;border-radius:5px;">Delete</button>
 									</a>
 									
-									<a href="editnotification.php?notification=<?php echo $notification['day']; ?>">
+									<a href="editnotification.php?notification=<?php echo $notification['id']; ?>">
 										<button class = "submit" style = "background-color:green;color:white;border-radius:5px;">Edit</button>
 									</a>
 								</p>

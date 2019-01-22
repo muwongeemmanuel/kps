@@ -9,7 +9,6 @@
 
 <?php require($_SERVER['DOCUMENT_ROOT'] . "/kps/sb-php/header_admin.php"); ?>
 
-		-->
 		<div class="dropdown">
 
 			<button onclick="myFunction(this)" class="dropbtn">
@@ -22,7 +21,7 @@
 
 		<div id="myDropdown" class="dropdown-content">
 			 <a class="active" href="admin.php">Staff</a>
-			 <a href="creative.html">Creative Corner</a>
+			 <a href="gallery.php">Gallery</a>
 			 <a href="managecalendar.php">Calender</a>
 			 <a href="notification.html">Notification</a>
 			 <a href="logout.php">Log Out</a>
@@ -42,7 +41,7 @@
 		<div id="wrap">
 			<ul>
 			  <li><a class="active" href="admin.php">Staff</a></li>
-			  <li><a href="creative.html">Creative Corner</a></li>
+			  <li><a href="gallery.php">Gallery</a></li>
 			  <li><a href="managecalendar.php">Calender</a></li>
 			  <li><a href="notification.html">Notification</a></li>
 			  <li><a href="logout.php">Log Out</a></li>

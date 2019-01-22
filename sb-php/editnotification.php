@@ -24,7 +24,7 @@
 
 		<div id="myDropdown" class="dropdown-content">
 			 <a href="admin.php">Staff</a>
-			 <a href="creative.html">Creative Corner</a>
+			 <a href="gallery.php">Gallery</a>
 			 <a href="managecalendar.php">Calendar</a>
 			 <a class="active" href="managenotification.php">Notification</a>
 			 <a href="logout.php">Log Out</a>
@@ -44,7 +44,7 @@
 		<div id="wrap">
 			<ul>
 			  <li><a href="admin.php">Staff</a></li>
-			  <li><a href="creative.html">Creative Corner</a></li>
+			  <li><a href="gallery.php">Gallery</a></li>
 			  <li><a href="managecalendar.php">Calendar</a></li>
 			  <li><a class="active" href="managenotification.php">Notification</a></li>
 			  <li><a href="logout.php">Log Out</a></li>
@@ -64,8 +64,8 @@
 		//include "C:/xampp/htdocs/sb/sb-php/admin.php";
 	}
 
-	$date = $_GET['notification']; 
-	$select_notification = "SELECT * FROM notification WHERE day = '".$date."'";
+	$id = $_GET['notification']; 
+	$select_notification = "SELECT * FROM notification WHERE id = ".$id;
 	//$insert_staff = "INSERT INTO `staff` VALUES('$staffID','$fullname','$description','$catergory','$title','$image')";
 	$notification = mysqli_query($connection, $select_notification) or die(mysqli_error($connection));
 	$count = mysqli_num_rows($notification);
@@ -90,7 +90,7 @@
 					</div>
 
 					<div style="color:white;text-align:;padding-left:40px;">
-						<form name="addingnotification" method="post" action="addingnotification.php" enctype="multipart/form-data"
+						<form name="addingnotification" method="post" action="editingnotification.php" enctype="multipart/form-data"
 								 style="background-color:;text-align:;padding-bottom:0px;">
 							<?php foreach ($notification as $notification): ?>
 
@@ -111,10 +111,11 @@
 								</label></p>
 
 								<p><label style="color:white;">Associated File : <br>
-									<input type="file" id="files" name="file" value="<?php echo e($notification['filename']); ?>" />
+									<input type="file" id="files" name="file" />
 								</label></p>
 								<!-- hidden input-->
-								<input type="hidden" name="originaldate" value="<?php echo e($notification['day']); ?>" />
+								<input type="hidden" name="id" value="<?php echo e($notification['id']); ?>" />
+								<input type="hidden" name="originalfilepath" value="<?php echo e($notification['filepath']); ?>" />
 								
 								<p style="text-align: center;">
 									<input class="submit" type="submit" name="submit" value="Edit">

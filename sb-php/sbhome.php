@@ -88,9 +88,20 @@
 		<div class="t">	
 			<div class="inner">	
 				<p class="bu" style="padding:10px;text-align:center;margin:5px auto;">
-					<img class="slides" src="http://localhost/sb/sb-images/images-4.jpeg" alt="not here" style="width:100%">
-					<img class="slides" src="http://localhost/sb/sb-images/images.jpeg" alt="not here" style="width:100%">
-					<img class="slides" src="http://localhost/sb/sb-images/images.png" alt="not here" style="width:100%">
+
+					<?php
+							
+						$select_gallery = "SELECT image FROM gallery WHERE catergory ='Rotate'";
+											 
+						$gallery = mysqli_query($connection, $select_gallery) or die(mysqli_error($connection));
+						$count = mysqli_num_rows($gallery);
+
+					?>
+					<?php foreach ($gallery as $gallery): ?>
+
+						<img class="slides" src="<?php echo e($gallery['image']); ?>" alt="not here" style="width:100%">
+						
+					<?php endforeach; ?>
 				
 				</p>
 			</div>
@@ -218,9 +229,21 @@
 			</h2>
 					<p style="color:white;text-align:center;padding:20px;">
 						<marquee behavior="scroll" direction="left" scrolldelay="800" scrollamount="100">
-							<img src="http://localhost/sb/sb-images/images-7.jpeg" width="150" height="108" alt="Cup of tea anyone?">
-							<img src="http://localhost/sb/sb-images/images.jpeg" width="150" height="108" alt="Cup of tea anyone?">
-							<img src="http://localhost/sb/sb-images/images.png" width="150" height="108" alt="Cup of tea anyone?">
+
+							<?php
+							
+								$select_gallery = "SELECT image FROM gallery WHERE catergory ='Creative'";
+													 
+								$gallery = mysqli_query($connection, $select_gallery) or die(mysqli_error($connection));
+								$count = mysqli_num_rows($gallery);
+
+							?>
+							<?php foreach ($gallery as $gallery): ?>
+
+								<img src="<?php echo e($gallery['image']); ?>" width="150" height="108" alt="Creative">
+								
+							<?php endforeach; ?>
+							
 						</marquee>
 					</p>
 		

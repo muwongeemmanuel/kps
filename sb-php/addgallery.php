@@ -24,8 +24,8 @@
 
 		<div id="myDropdown" class="dropdown-content">
 			 <a href="admin.php">Staff</a>
-			 <a href="gallery.php">Gallery</a>
-			 <a class="active" href="managecalendar.php">Calendar</a>
+			 <a class="active" href="gallery.php">Gallery</a>
+			 <a href="managecalendar.php">Calendar</a>
 			 <a href="managenotification.php">Notification</a>
 			 <a href="logout.php">Log Out</a>
 		</div>
@@ -44,8 +44,8 @@
 		<div id="wrap">
 			<ul>
 			  <li><a href="admin.php">Staff</a></li>
-			  <li><a href="gallery.php">Gallery</a></li>
-			  <li><a class="active" href="managecalendar.php">Calendar</a></li>
+			  <li><a class="active" href="gallery.php">Gallery</a></li>
+			  <li><a href="managecalendar.php">Calendar</a></li>
 			  <li><a href="managenotification.php">Notification</a></li>
 			  <li><a href="logout.php">Log Out</a></li>
 			</ul>
@@ -57,52 +57,67 @@
 		
 		<div class="corner" style="background-color: brown;">
 			<h2 style="background-color: green;">	
-					<p class="cc" style="color:white;text-align:center;"><b>Add Calendar</b></p>
+					<p class="cc" style="color:white;text-align:center;"><b>Add Gallery</b></p>
 			</h2>
-					
 					<div style="color:white;text-align:;padding-left: 20px;">
 							
-						<a href="managecalendar.php">
+						<a href="gallery.php">
 							<button class = "submit" style = "background-color:green;color:white;border-radius:5px;">
 								Go Back
 							</button>
 						</a>
 					</div>
-
 					<div style="color:white;text-align:;padding-left:40px;">
-						<form name="addingcalendar" method="post" action="addingcalendar.php" enctype="multipart/form-data"
+						<form name="addinggallery" method="post" action="addinggallery.php" enctype="multipart/form-data"
 								 style="background-color:;text-align:;padding-bottom:0px;">
 							
-							<p><label style="color:white;">Date Of Event : <br>
-								<input type="Date" name="date" id="date" placeholder="Year-Month-Day e.g <?php echo date("Y-m-d"); ?>" value="" min="" max=""/>
+							<p><label style="color:white;">Catergory : <br>
+								<select name="catergory">
+								  <option value="not selected">***please select the catergory***</option>
+								  <option value="Budge">Budge</option>
+								  <option value="Creative">Creative</option>
+								  <option value="Design">Design</option>
+								  <option value="Rotate">Rotate</option>
+								</select>
 							</label></p>
-							
-							<p><label style="color:white;">Description : <br>
-							<textarea name="description" placeholder="We are going to hold a swimming session...." rows="10"></textarea>
+							<p style="text-align: center;"><label style="color:white;">Image : <br>
+								<input type="file" id="files" name="image" /><br>
+								<img id="image" style="width: 200px; height: 200px; background-color: white;text-align: center;" />
 							</label></p>
-							
 							<p style="text-align: center;">
-								<input class="submit" type="submit" name="submit" value="Add Date">
+								<input class="submit" type="submit" name="submit" value="Save">
 							</p>
 
 						</form>
-									
+									<!-- javascript that automatically displays the chosen image -->								
+									<script type="text/javascript">
+										document.getElementById("files").onchange = function () {
+									    var reader = new FileReader();
+
+									    reader.onload = function (e) {
+									        // get loaded data and render thumbnail.
+									        document.getElementById("image").src = e.target.result;
+									    };
+
+									    // read the image file as a data URL.
+									    reader.readAsDataURL(this.files[0]);
+									};
+									</script>
 					</div>
 
 					<div style="color:white;text-align:right;padding:20px;">
-						<a href="managecalendar.php">
+						<a href="gallery.php">
 							<button class = "submit" style = "background-color:green;color:white;border-radius:5px;">
 								Go Back
 							</button>
 						</a>
 					</div>
-					
 		
 		</div>
 
 	</div>	
 
-		<?php require($_SERVER['DOCUMENT_ROOT'] . "/kps/sb-php/footer.php"); ?>
+<?php require($_SERVER['DOCUMENT_ROOT'] . "/kps/sb-php/footer.php"); ?>
 
 <?php 
 	

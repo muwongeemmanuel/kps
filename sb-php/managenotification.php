@@ -25,8 +25,8 @@
 
 		<div id="myDropdown" class="dropdown-content">
 			 <a href="admin.php">Staff</a>
-			 <a href="creative.html">Creative Corner</a>
-			 <a href="managecalendar.php">Calender</a>
+			 <a href="gallery.php">Gallery</a>
+			 <a href="managecalendar.php">Calendar</a>
 			 <a class="active" href="managenotification.php">Notification</a>
 			 <a href="logout.php">Log Out</a>
 		</div>
@@ -45,8 +45,8 @@
 		<div id="wrap">
 			<ul>
 			  <li><a href="admin.php">Staff</a></li>
-			  <li><a href="creative.html">Creative Corner</a></li>
-			  <li><a href="managecalendar.php">Calender</a></li>
+			  <li><a href="gallery.php">Gallery</a></li>
+			  <li><a href="managecalendar.php">Calendar</a></li>
 			  <li><a class="active" href="managenotification.php">Notification</a></li>
 			  <li><a href="logout.php">Log Out</a></li>
 			</ul>
@@ -96,20 +96,20 @@
 											<td><?php echo $notification['day']; ?></td>
 											<td><?php echo $notification['description']; ?></td>
 											<td>
-												<a href="viewnotification.php?notification=<?php echo $notification['day']; ?>">
+												<a href="viewnotification.php?notification=<?php echo $notification['id']; ?>">
 													<button class = "submit" style = "background-color:blue;color:white;border-radius:5px;">View
 													</button>
 												</a>
 											</td>
 											<td>
-												<a href="editnotification.php?notification=<?php echo $notification['day']; ?>">
+												<a href="editnotification.php?notification=<?php echo $notification['id']; ?>">
 													<button class = "submit" style = "background-color:blue;color:white;border-radius:5px;">Edit
 													</button>
 												</a>
 													
 											</td>
 											<td>
-												<a href="deletenotification.php?notification=<?php echo $notification['day']; ?>">
+												<a href="deletenotification.php?notification=<?php echo $notification['id']; ?>">
 													<button class = "submit" style = "background-color:blue;color:white;border-radius:5px;">Delete
 													</button>
 												</a>

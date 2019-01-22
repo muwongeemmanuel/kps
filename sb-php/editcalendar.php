@@ -25,8 +25,8 @@ if (isset($_SESSION['username'])){
 
 		<div id="myDropdown" class="dropdown-content">
 			 <a href="staff_admin.html">Staff</a>
-			 <a href="creative.html">Creative Corner</a>
-			 <a class="active" href="managecalendar.php">Calender</a>
+			 <a href="gallery.php">Gallery</a>
+			 <a class="active" href="managecalendar.php">Calendar</a>
 			 <a href="managenotification.php">Notification</a>
 			 <a href="logout.php">Log Out</a>
 		</div>
@@ -45,8 +45,8 @@ if (isset($_SESSION['username'])){
 		<div id="wrap">
 			<ul>
 			  <li><a href="staff_admin.html">Staff</a></li>
-			  <li><a href="creative.html">Creative Corner</a></li>
-			  <li><a class="active" href="managecalendar.php">Calender</a></li>
+			  <li><a href="gallery.php">Gallery</a></li>
+			  <li><a class="active" href="managecalendar.php">Calendar</a></li>
 			  <li><a href="managenotification.php">Notification</a></li>
 			  <li><a href="logout.php">Log Out</a></li>
 			</ul>

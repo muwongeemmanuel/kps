@@ -2,6 +2,7 @@
 	
 	session_start();
  	require('connect.php');
+ 	require('escape.php');
 	
 	//$_SESSION['username'] = $username;
 	//checking if the session is still valid.
@@ -23,7 +24,7 @@
 
 		<div id="myDropdown" class="dropdown-content">
 			 <a class="active" href="admin.php">Staff</a>
-			 <a href="creative.html">Creative Corner</a>
+			 <a href="gallery.php">Gallery</a>
 			 <a href="managecalendar.php">Calender</a>
 			 <a href="managenotification.php">Notification</a>
 			 <a href="logout.php">Log Out</a>
@@ -43,7 +44,7 @@
 		<div id="wrap">
 			<ul>
 			  <li><a class="active" href="admin.php">Staff</a></li>
-			  <li><a href="creative.html">Creative Corner</a></li>
+			  <li><a href="gallery.php">Gallery</a></li>
 			  <li><a href="managecalendar.php">Calendar</a></li>
 			  <li><a href="managenotification.php">Notification</a></li>
 			  <li><a href="logout.php">Log Out</a></li>

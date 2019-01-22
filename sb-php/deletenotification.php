@@ -12,9 +12,9 @@
 			# code...
 			$calendar = false;
 		} else{
-			$date = $_GET['notification'];
+			$id = $_GET['notification'];
 			//deleting file in the folder first
-			$select_notification = "SELECT * FROM notification WHERE day = '".$date."'";
+			$select_notification = "SELECT * FROM notification WHERE id = ".$id;
 			$notification = mysqli_query($connection, $select_notification) or die(mysqli_error($connection));
 			$count = mysqli_num_rows($notification);
 ?>
@@ -43,7 +43,7 @@
 
 			?>
 <?php
-			$delete_notification = "DELETE FROM notification WHERE day = '".$date."'";
+			$delete_notification = "DELETE FROM notification WHERE id = ".$id;
 								 
 			$notification = mysqli_query($connection, $delete_notification) or die(mysqli_error($connection));
 

@@ -47,7 +47,7 @@
 
 <body  style="background-color:gray;margin:20px;font-size:20px;" id="body" 
 <?php 
-	if (isset($_SESSION['changingstaff']) or isset($_SESSION['addingstaff']) or isset($_SESSION['changingcalendar']) or isset($_SESSION['addingcalendar']) or isset($_SESSION['changingnotification']) or isset($_SESSION['addingnotification']) ){ 
+	if (isset($_SESSION['changingstaff']) or isset($_SESSION['addingstaff']) or isset($_SESSION['changingcalendar']) or isset($_SESSION['addingcalendar']) or isset($_SESSION['changingnotification']) or isset($_SESSION['addingnotification']) or isset($_SESSION['changinggallery']) or isset($_SESSION['addinggallery']) ){ 
 ?>onload ="mybody()" >
 
 <script>
@@ -76,6 +76,14 @@ function mybody() {
 		window.alert("<?php echo $_SESSION['addingnotification']; ?>");
 		<?php unset($_SESSION['addingnotification']); // remove it now we have used it ?>
 	<?php endif; ?>
+	<?php if (!empty($_SESSION['changinggallery'])): ?>
+		window.alert("<?php echo $_SESSION['changinggallery']; ?>");
+		<?php unset($_SESSION['changinggallery']); // remove it now we have used it ?>
+	<?php endif; ?>
+	<?php if (!empty($_SESSION['addinggallery'])): ?>
+		window.alert("<?php echo $_SESSION['addinggallery']; ?>");
+		<?php unset($_SESSION['addinggallery']); // remove it now we have used it ?>
+	<?php endif; ?>
 	
 }
 </script>
@@ -90,9 +98,42 @@ function mybody() {
 		<div class="hd" style="background-color: brown; padding:19px;">
 			<h1>	
 				
-					<p class="left-h"><img src="http://localhost/sb/sb-images/images.png" height="120" width="200" alt="not here"></p>
-					<p class="right-h"><img src="http://localhost/sb/sb-images/images.jpeg" height="120" ></p>
-					<p class="cent-h" style="color:blue;text-align:center;"><em><b>Kibuuka</br> Preparatory</br>School</em></b></p>
+				<?php
+							
+					$select_gallery = "SELECT image FROM gallery WHERE catergory ='Budge'";
+										 
+					$gallery = mysqli_query($connection, $select_gallery) or die(mysqli_error($connection));
+					$count = mysqli_num_rows($gallery);
+
+					$limit = 0;
+				?>
+				<?php foreach ($gallery as $gallery): ?>
+
+					
+					<p class="left-h"><img src= "<?php echo e($gallery['image']); ?>" height="120" width="200" alt="not here"></p>
+					
+					<?php if ($limit++ > 1) break; ?>
+
+				<?php endforeach; ?>
+
+				<?php
+								
+					$select_gallery = "SELECT image FROM gallery WHERE catergory ='Design'";
+										 
+					$gallery = mysqli_query($connection, $select_gallery) or die(mysqli_error($connection));
+					$count = mysqli_num_rows($gallery);
+
+					$limit = 0;
+				?>
+				<?php foreach ($gallery as $gallery): ?>
+
+					
+					<p class="right-h"><img src= "<?php echo e($gallery['image']); ?>" height="120" width="200" alt="not here"></p>
+					
+					<?php if ($limit++ > 1) break; ?>
+
+				<?php endforeach; ?>
+				<p class="cent-h" style="color:blue;text-align:center;"><em><b>Kibuuka</br> Preparatory</br>School</em></b></p>
 					
 			</h1>
 		</div>

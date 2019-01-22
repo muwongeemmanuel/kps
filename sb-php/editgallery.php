@@ -24,8 +24,8 @@ if (isset($_SESSION['username'])){
 		</div>
 
 		<div id="myDropdown" class="dropdown-content">
-			 <a class="active" href="staff_admin.html">Staff</a>
-			 <a href="gallery.php">Gallery</a>
+			 <a href="staff_admin.html">Staff</a>
+			 <a class="active" href="gallery.php">Gallery</a>
 			 <a href="managecalendar.php">Calender</a>
 			 <a href="notification.html">Notification</a>
 			 <a href="logout.php">Log Out</a>
@@ -44,8 +44,8 @@ if (isset($_SESSION['username'])){
 		
 		<div id="wrap">
 			<ul>
-			  <li><a class="active" href="staff_admin.html">Staff</a></li>
-			  <li><a href="gallery.php">Gallery</a></li>
+			  <li><a href="staff_admin.html">Staff</a></li>
+			  <li><a class="active" href="gallery.php">Gallery</a></li>
 			  <li><a href="managecalendar.php">Calender</a></li>
 			  <li><a href="notification.html">Notification</a></li>
 			  <li><a href="logout.php">Log Out</a></li>
@@ -54,21 +54,21 @@ if (isset($_SESSION['username'])){
 		</div>
 <?php
 	
-	if (!isset($_GET['staff'])) {
+	if (!isset($_GET['gallery'])) {
 		# code...
 		//
 			//$_SESSION['changingstaff'] = "Sorry, No details of staff have been deleted.";
 			
-			header('Location: admin.php');
+			header('Location: gallery.php');
 			die();
 		//include "C:/xampp/htdocs/sb/sb-php/admin.php";
 	}
 
-	$id = $_GET['staff']; 
-	$select_staff = "SELECT * FROM staff WHERE id = ".$id;
+	$id = $_GET['gallery']; 
+	$select_gallery = "SELECT * FROM gallery WHERE id = ".$id;
 	//$insert_staff = "INSERT INTO `staff` VALUES('$staffID','$fullname','$description','$catergory','$title','$image')";
-	$staff = mysqli_query($connection, $select_staff) or die(mysqli_error($connection));
-	$count = mysqli_num_rows($staff);
+	$gallery = mysqli_query($connection, $select_gallery) or die(mysqli_error($connection));
+	$count = mysqli_num_rows($gallery);
 
 ?>
 	
@@ -77,54 +77,42 @@ if (isset($_SESSION['username'])){
 		
 		<div class="corner" style="background-color: brown;">
 			<h2 style="background-color: green;">	
-					<p class="cc" style="color:white;text-align:center;"><b>Edit Staff</b></p>
+					<p class="cc" style="color:white;text-align:center;"><b>Edit Gallery</b></p>
 			</h2>
 					<div style="color:white;text-align:;padding-left: 20px;">
-							<a href="admin.php">
+							<a href="gallery.php">
 									<button class = "submit" style = "background-color:green;color:white;border-radius:5px;">Go Back</button>
 							</a>
 					</div>
 					<div style="color:white;text-align:;padding-left:40px;">
-						<form name="addingstaff" method="post" action="editingstaff.php" enctype="multipart/form-data"
+						<form name="editinggallery" method="post" action="editinggallery.php" enctype="multipart/form-data"
 								 style="background-color:;text-align:;padding-bottom:0px;">
 						
-							<?php foreach ($staff as $staff): ?>
+							<?php foreach ($gallery as $gallery): ?>
 
-								<p><label style="color:white;">Staff ID : <br>
-									<input type="text" name="staffID" placeholder="sb001" id="StaffID" value="<?php echo e($staff['id']); ?>" />
-								</label></p>
-								<p><label style="color:white;">Fullname : <br>
-									<input type="text" name="fullname" placeholder="Firstname Lastname" id="fullname" value="<?php echo e($staff['fullnames']); ?>" />
-								</label></p>
-								<p><label style="color:white;">Description : <br>
-								<textarea name="description" placeholder="S/he's a good caring teacher ..." rows="10" >
-									<?php echo e($staff['description']); ?> 
-								</textarea>
-								</label></p>
+								
+								
 								<p><label style="color:white;">Catergory : <br>
 									<select name="catergory">
 									  <option value="not selected">***please select the catergory***</option>
-									  <option value="Directors" <?php if ($staff['catergory'] == 'Directors') echo ' selected="selected"'; ?> >
-									  	Directors
+									  <option value="Budge" <?php if ($gallery['catergory'] == 'Budge') echo 'selected="selected"'; ?> >
+									  	Budge
 									  </option>
-									  <option value="Administrators"  <?php if ($staff['catergory'] == 'Administrators') echo ' selected="selected"'; ?> >
-									  	Administrators</option>
-									  <option value="Teaching Staff"  <?php if ($staff['catergory'] == 'Teaching Staff') echo ' selected="selected"'; ?> >
-									  	Teaching Staff</option>
-									  <option value="Non-Teaching Staff" <?php if ($staff['catergory'] =='Non-Teaching Staff') echo'selected="selected"'; ?> >
-									  	Non-Teaching Staff</option>
+									  <option value="Creative"  <?php if ($gallery['catergory'] == 'Creative') echo ' selected="selected"'; ?> >
+									  	Creative</option>
+									  <option value="Design"  <?php if ($gallery['catergory'] == 'Design') echo ' selected="selected"'; ?> >
+									  	Design</option>
+									  <option value="Rotate"  <?php if ($gallery['catergory'] == 'Rotate') echo ' selected="selected"'; ?> >
+									  	Rotate</option>
 									</select>
-								</label></p>
-								<p><label style="color:white;">Title/Position : <br>
-										<input type="text" name="title" placeholder="e.g headteacher" id="title" value="<?php echo e($staff['title']); ?>" />
 								</label></p>
 								<p style="text-align: center;"><label style="color:white;">Image : <br>
 									<input type="file" id="files" name="image" /><br>
-									<img id="image" style="width: 200px; height: 200px; background-color: white;border-radius: 10px;" src= "<?php echo e($staff['image']); ?>" />
+									<img id="image" style="width: 200px; height: 200px; background-color: white;border-radius: 10px;" src= "<?php echo e($gallery['image']); ?>" />
 								</label></p>
 
 								<!-- hidden input-->
-								<input type="hidden" name="id" value="<?php echo e($staff['id']); ?>" />
+								<input type="hidden" name="id" value="<?php echo e($gallery['id']); ?>" />
 								<p style="text-align: center;">
 									<input class="submit" type="submit" name="submit" value="Edit">
 								</p>
@@ -150,7 +138,7 @@ if (isset($_SESSION['username'])){
 
 					<div style="color:white;text-align:right;padding:20px;">
 							
-						<a href="admin.php">
+						<a href="gallery.php">
 							<button class = "submit" style = "background-color:green;color:white;border-radius:5px;">
 								Go Back
 							</button>

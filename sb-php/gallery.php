@@ -3,7 +3,6 @@
 	session_start();
  	require('connect.php');
  	require('escape.php');
-
 	
 	//$_SESSION['username'] = $username;
 	//checking if the session is still valid.
@@ -25,8 +24,8 @@
 
 		<div id="myDropdown" class="dropdown-content">
 			 <a href="admin.php">Staff</a>
-			 <a href="gallery.php">Gallery</a>
-			 <a class="active" href="managecalendar.php">Calendar</a>
+			 <a class="active" href="gallery.php">Gallery</a>
+			 <a href="managecalendar.php">Calendar</a>
 			 <a href="managenotification.php">Notification</a>
 			 <a href="logout.php">Log Out</a>
 		</div>
@@ -45,8 +44,8 @@
 		<div id="wrap">
 			<ul>
 			  <li><a href="admin.php">Staff</a></li>
-			  <li><a href="gallery.php">Gallery</a></li>
-			  <li><a class="active" href="managecalendar.php">Calendar</a></li>
+			  <li><a class="active" href="gallery.php">Gallery</a></li>
+			  <li><a href="managecalendar.php">Calendar</a></li>
 			  <li><a href="managenotification.php">Notification</a></li>
 			  <li><a href="logout.php">Log Out</a></li>
 			</ul>
@@ -58,11 +57,11 @@
 		
 		<div class="corner" style="background-color: brown;">
 			<h2 style="background-color: green;">	
-					<p class="cc" style="color:white;text-align:center;"><b>Manage Calendar</b></p>
+					<p class="cc" style="color:white;text-align:center;"><b>Manage Gallery</b></p>
 			</h2>
 					<p style="color:white;text-align:center;">
 						
-						<a href="addcalendar.php">
+						<a href="addgallery.php">
 							<button class = "submit" style = "background-color:green;color:white;border-radius:5px;">
 								Add
 							</button>
@@ -71,15 +70,15 @@
 
 					<?php
 								//3.1.2 Checking the values are existing in the database or not
-							$select_calendar = "SELECT * FROM `Calender`";
+							$select_gallery = "SELECT * FROM `gallery` ORDER BY catergory";
 							 
-							$result = mysqli_query($connection, $select_calendar) or die(mysqli_error($connection));
+							$result = mysqli_query($connection, $select_gallery) or die(mysqli_error($connection));
 							$count = mysqli_num_rows($result);
 					?>	
 							
 					<?php if ($count == 0): ?>
 						<p style="color:white;text-align:center;padding:20px;">
-							Sorry, No details of calendar have been added yet.
+							Sorry, No details of Gallery have been added yet.
 						</p>
 					<?php else: ?>
 						
@@ -88,34 +87,31 @@
 							
 							<table>
 								
+									
+								<?php foreach ($result as $gallery): ?>
 									<tr>
-										<th>Date</th> <th>Description</th> <th></th> <th></th> <th></th>
+										<td rowspan="2">
+											<img src= "<?php echo e($gallery['image']); ?>" height="150" width="150" alt="not here" style = "border-radius: 10px;">
+										</td>
+										<td colspan="2" ><?php echo $gallery['catergory']; ?></td>
 									</tr>
-									<?php foreach ($result as $calendar): ?>
-										<tr>
-											<td><?php echo $calendar['day']; ?></td>
-											<td><?php echo $calendar['description']; ?></td>
-											<td>
-												<a href="adminviewcalendar.php?calendar=<?php echo $calendar['day']; ?>">
-													<button class = "submit" style = "background-color:blue;color:white;border-radius:5px;">View
-													</button>
-												</a>
-											</td>
-											<td>
-												<a href="editcalendar.php?calendar=<?php echo $calendar['day']; ?>">
-													<button class = "submit" style = "background-color:blue;color:white;border-radius:5px;">Edit
-													</button>
-												</a>
-													
-											</td>
-											<td>
-												<a href="deletecalendar.php?calendar=<?php echo $calendar['day']; ?>">
-													<button class = "submit" style = "background-color:blue;color:white;border-radius:5px;">Delete
-													</button>
-												</a>
-											</td>
-										</tr>
-									<?php endforeach; ?>
+									<tr>
+										
+										<td>
+											<a href="editgallery.php?gallery=<?php echo $gallery['id']; ?>">
+												<button class = "submit" style = "background-color:blue;color:white;border-radius:5px;">Edit
+												</button>
+											</a>
+												
+										</td>
+										<td>
+											<a href="deletegallery.php?gallery=<?php echo $gallery['id']; ?>">
+												<button class = "submit" style = "background-color:blue;color:white;border-radius:5px;">Delete
+												</button>
+											</a>
+										</td>
+									</tr>
+								<?php endforeach; ?>
 								
 
 							</table>
@@ -129,6 +125,7 @@
 	</div>	
 
 		<?php require($_SERVER['DOCUMENT_ROOT'] . "/kps/sb-php/footer.php"); ?>
+
 <?php 
 	
 	}

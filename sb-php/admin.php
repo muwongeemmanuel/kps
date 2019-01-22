@@ -24,9 +24,10 @@
 
 		<div id="myDropdown" class="dropdown-content">
 			 <a class="active" href="admin.php">Staff</a>
-			 <a href="creative.html">Creative Corner</a>
+			 <a href="gallery.php">Gallery</a>
 			 <a href="managecalendar.php">Calender</a>
 			 <a href="managenotification.php">Notification</a>
+			 <a href="aboutus.php">About Us</a>
 			 <a href="logout.php">Log Out</a>
 		</div>
 
@@ -44,9 +45,10 @@
 		<div id="wrap">
 			<ul>
 			  <li><a class="active" href="admin.php">Staff</a></li>
-			  <li><a href="creative.html">Creative Corner</a></li>
+			  <li><a href="gallery.php">Gallery</a></li>
 			  <li><a href="managecalendar.php">Calender</a></li>
 			  <li><a href="managenotification.php">Notification</a></li>
+			  <li><a href="aboutus.php">About Us</a></li>
 			  <li><a href="logout.php">Log Out</a></li>
 			</ul>
 			

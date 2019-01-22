@@ -7,7 +7,8 @@
 
 		//3.1.1 Assigning posted values to variables.
 		$date 		= $_POST['date'];
-		$description	= $_POST['description'];
+		//$description = $_POST['description'];
+		$description = mysqli_real_escape_string($connection, $_POST['description']);
 		$originaldate	= $_POST['originaldate'];
 
 		$update_calendar = "UPDATE calender SET day='$date',description='$description' WHERE day = '".$originaldate."'";
