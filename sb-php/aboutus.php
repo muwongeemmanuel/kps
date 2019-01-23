@@ -27,8 +27,8 @@
 			 <a href="admin.php">Staff</a>
 			 <a href="gallery.php">Gallery</a>
 			 <a href="managecalendar.php">Calendar</a>
-			 <a class="active" href="managenotification.php">Notification</a>
-			 <a href="aboutus.php">About Us</a>
+			 <a href="managenotification.php">Notification</a>
+			 <a class="active" href="aboutus.php">About Us</a>
 			 <a href="logout.php">Log Out</a>
 		</div>
 
@@ -48,8 +48,8 @@
 			  <li><a href="admin.php">Staff</a></li>
 			  <li><a href="gallery.php">Gallery</a></li>
 			  <li><a href="managecalendar.php">Calendar</a></li>
-			  <li><a class="active" href="managenotification.php">Notification</a></li>
-			  <li><a href="aboutus.php">About Us</a></li>
+			  <li><a href="managenotification.php">Notification</a></li>
+			  <li><a class="active" href="aboutus.php">About Us</a></li>
 			  <li><a href="logout.php">Log Out</a></li>
 			</ul>
 			
@@ -60,28 +60,60 @@
 		
 		<div class="corner" style="background-color: brown;">
 			<h2 style="background-color: green;">	
-					<p class="cc" style="color:white;text-align:center;"><b>Manage Notification</b></p>
+					<p class="cc" style="color:white;text-align:center;"><b>About Us</b></p>
 			</h2>
+					<?php
+							//3.1.2 Checking the values are existing in the database or not
+						$select_fees = "SELECT * FROM `fees`";
+						 
+						$result_fees = mysqli_query($connection, $select_fees) or die(mysqli_error($connection));
+						$count_fees = mysqli_num_rows($result_fees);
+					?>
+					<?php if ($count_fees == 0): ?>
+
+						<p style="color:white;text-align:;padding-left: 20px;">
+						
+							<a href="addfees.php">
+								<button class = "submit" style = "background-color:green;color:white;border-radius:5px;width: 85px;">
+									Add Fees
+								</button>
+							</a>
+						</p>
+
+					<?php else: ?>
+
+						<p style="color:white;text-align:;padding-left: 20px;">
+						
+							<a href="viewfees.php">
+								<button class = "submit" style = "background-color:green;color:white;border-radius:5px;width: 90px;">
+									View Fees
+								</button>
+							</a>
+						</p>
+
+					<?php endif; ?>	
+
 					<p style="color:white;text-align:center;">
 						
-						<a href="addnotification.php">
-							<button class = "submit" style = "background-color:green;color:white;border-radius:5px;">
-								Add
+						<a href="addaboutus.php">
+							<button class = "submit" style = "background-color:green;color:white;border-radius:5px;width: 110px;">
+								Add About Us
 							</button>
 						</a>
 					</p>
+					
 
 					<?php
 								//3.1.2 Checking the values are existing in the database or not
-							$select_notification = "SELECT * FROM `notification` ORDER BY day,type";
+							$select_aboutus = "SELECT * FROM `us` ORDER BY catergory";
 							 
-							$result = mysqli_query($connection, $select_notification) or die(mysqli_error($connection));
+							$result = mysqli_query($connection, $select_aboutus) or die(mysqli_error($connection));
 							$count = mysqli_num_rows($result);
 					?>	
 							
 					<?php if ($count == 0): ?>
 						<p style="color:white;text-align:center;padding:20px;">
-							Sorry, No details of notification have been added yet.
+							Sorry, No details of about Us have been added yet.
 						</p>
 					<?php else: ?>
 						
@@ -91,27 +123,27 @@
 							<table>
 								
 									<tr>
-										<th>Date</th> <th>Description</th> <th></th> <th></th> <th></th>
+										<th>Catergory</th> <th>Description</th> <th></th> <th></th> <th></th>
 									</tr>
-									<?php foreach ($result as $notification): ?>
+									<?php foreach ($result as $aboutus): ?>
 										<tr>
-											<td><?php echo $notification['day']; ?></td>
-											<td><?php echo $notification['description']; ?></td>
+											<td><?php echo $aboutus['catergory']; ?></td>
+											<td><?php echo substr($aboutus['description'], 0, 100)."..."; ?></td>
 											<td>
-												<a href="viewnotification.php?notification=<?php echo $notification['id']; ?>">
+												<a href="viewaboutus.php?aboutus=<?php echo $aboutus['id']; ?>">
 													<button class = "submit" style = "background-color:blue;color:white;border-radius:5px;">View
 													</button>
 												</a>
 											</td>
 											<td>
-												<a href="editnotification.php?notification=<?php echo $notification['id']; ?>">
+												<a href="editaboutus.php?aboutus=<?php echo $aboutus['id']; ?>">
 													<button class = "submit" style = "background-color:blue;color:white;border-radius:5px;">Edit
 													</button>
 												</a>
 													
 											</td>
 											<td>
-												<a href="deletenotification.php?notification=<?php echo $notification['id']; ?>">
+												<a href="deleteaboutus.php?aboutus=<?php echo $aboutus['id']; ?>">
 													<button class = "submit" style = "background-color:blue;color:white;border-radius:5px;">Delete
 													</button>
 												</a>
@@ -127,6 +159,7 @@
 					
 		
 		</div>
+		
 
 	</div>	
 

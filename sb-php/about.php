@@ -19,12 +19,12 @@
 		</div>
 
 		<div id="myDropdown" class="dropdown-content">
-			 <a class="active" href="sbhome.php">Home</a>
+			 <a href="sbhome.php">Home</a>
 			 <a href="nursery.php">Nursery School</a>
 			 <a href="primary.php">Primary School</a>
 			 <a href="admission.php">Admission</a>
 			 <a href="staff.php">Our Staff</a>
-			 <a href="about.php">About Us</a>
+			 <a class="active" href="about.php">About Us</a>
 			 <a href="scontact.php">Contact</a>
 			 <a href="login.php">Login</a>
 		</div>
@@ -56,7 +56,7 @@
 		
 		<div id="wrap">
 			<ul>
-			  <li><a class="active" href="sbhome.php">Home</a></li>
+			  <li><a href="sbhome.php">Home</a></li>
 			  <li class="dropdown">
 				<a href="javascript:void(0)" class="dropbtn">Program</a>
 				<div class="dropdown-content">
@@ -66,7 +66,7 @@
 			  </li>
 			  <li><a href="admission.php">Admission</a></li>
 			  <li><a href="staff.php">Our Staff</a></li>
-			  <li><a href="about.php">About Us</a></li>
+			  <li><a class="active" href="about.php">About Us</a></li>
 			  <li><a href="scontact.php">Contact</a></li>
 			  <li><a href="login.php">Login</a></li>
 			</ul>
@@ -76,51 +76,49 @@
 	<div class="all2">	
 		<div class="corner" style="background-color: brown;">
 			<h2 class="h" style="background-color: blue;">	
-					<p style="color:white;text-align:center;"><b>Notification</b></p>
+					<p style="color:white;text-align:center;"><b>About Us</b></p>
 			</h2>
 
 			<?php
 
-				$select_notification = "SELECT * FROM notification ORDER BY day,type";
+				$select_aboutus = "SELECT * FROM us WHERE catergory='About Us'";
 									 
-				$notification = mysqli_query($connection, $select_notification) or die(mysqli_error($connection));
-				$count = mysqli_num_rows($notification);
+				$aboutus = mysqli_query($connection, $select_aboutus) or die(mysqli_error($connection));
+				$count = mysqli_num_rows($aboutus);
 			
 			?>	
 							
-					<?php if ($count == 0): ?>
-						<p style="color:white;text-align:center;padding:20px;">
-							Sorry, No details of notification have been added yet.
-						</p>
-					<?php else: ?>
-						
-						<p style="color:white;text-align:;padding:px;">
+			<?php if ($count == 0): ?>
+				<p style="color:white;text-align:center;padding:20px;">
+					Sorry, No details About Us have been added yet.
+				</p>
+			<?php else: ?>
+				
+				<p style="color:white;text-align:;padding:px;">
 
 
-							<?php foreach ($notification as $notification): ?>
+					<?php foreach ($aboutus as $aboutus): ?>
 
-								<p style="color:white;text-align:;padding-left:20px;margin:40px;">
+						<p style="color:white;text-align:;padding-left:20px;margin:40px;">
 
-									<p style="color:white;padding-left:20px;"><?php echo e($notification['type']); ?></p>
-									<p style="color:white;padding-left:20px;">Description: <?php echo e($notification['description']); ?></p>
-									<P style="color:white;padding-left:20px;">
-										<a href="download.php?file=<?php echo e($notification['filepath']);?>" style="color:purple;text-decoration: none;">
-											<?php echo e($notification['filename']);?><br>
-										</a>
-									</P>
-								</p>
-								
-								<hr>
-
-							<?php endforeach; ?>
-							<p style="color:white;text-align:center;">
-								<a href="sbhome.php">
-									<button class = "submit" style = "background-color:green;color:white;border-radius:5px;">Go Back</button>
+							<h3 class="h" style="background-color: brown;">
+								<p style="color:white;padding-left:20px;"><?php echo e($aboutus['title']); ?></p>
+							</h3>
+							<p style="color:white;padding-left:20px;"><?php echo e($aboutus['description']); ?></p>
+							<P style="color:white;padding-left:20px;">
+								<a href="download.php?file=<?php echo e($aboutus['filepath']);?>" style="color:purple;text-decoration: none;">
+									<?php echo e($aboutus['filename']);?><br>
 								</a>
-							</p>
-
+							</P>
 						</p>
-					<?php endif; ?>
+						
+						<!--<hr>-->
+
+					<?php endforeach; ?>
+					
+
+				</p>
+			<?php endif; ?>
 			
 		
 		</div>

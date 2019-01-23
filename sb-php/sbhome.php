@@ -78,10 +78,33 @@
 			<h2 class="h" style="background-color: blue;">	
 					<p style="color:white;text-align:center;"><b>Welcome</b></p>
 			</h2>
+			<?php
+	
+				$select_welcome = "SELECT description FROM us WHERE catergory ='Welcome'";
+									 
+				$welcome = mysqli_query($connection, $select_welcome) or die(mysqli_error($connection));
+				$count = mysqli_num_rows($welcome);
+
+			?>
+			<?php if ($count==0): ?>
+
+				<p style="color:white;text-align:center;padding:20px;">
+					
+					No Welcome message added yet. Contact the MGT.
+
+				</p>
+
+			<?php else: ?>
+
+				<?php foreach ($welcome as $welcome): ?>
+
 					<p style="color:white;text-align:center;padding:20px;">
-						Our website gives an impression of being a member of our school,</br>but really need to come and meet the staff and pupils to appreciate
-						 what makes learning enjoyable at Spongebob.</br>We look forward to seeing you soon.
+						<?php echo e($welcome['description']); ?></br>
 					</p>
+					
+				<?php endforeach; ?>
+
+			<?php endif; ?>
 			
 		
 		</div>
@@ -145,10 +168,33 @@
 			<h2 style="background-color: green;">	
 					<p style="color:white;text-align:;"><b>Mission Statement</b></p>
 			</h2>
+			<?php
+			
+				$select_mission = "SELECT description FROM us WHERE catergory ='Mission Statement'";
+									 
+				$mission = mysqli_query($connection, $select_mission) or die(mysqli_error($connection));
+				$count = mysqli_num_rows($mission);
+
+			?>
+			<?php if ($count==0): ?>
+
+				<p style="color:white;text-align:center;padding:20px;">
+					
+					No Mission Statement added yet. Contact the MGT.
+
+				</p>
+
+			<?php else: ?>
+
+				<?php foreach ($mission as $mission): ?>
+
 					<p style="color:white;text-align:center;padding:20px;">
-						Spongebob Nursery School is an inspirational, creative and exciting place </br>where
-						children learn together and grow as individuals.</br>
+						<?php echo e($mission['description']); ?></br>
 					</p>
+					
+				<?php endforeach; ?>
+
+			<?php endif; ?>
 		
 		</div>
 		

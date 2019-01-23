@@ -26,8 +26,8 @@
 			 <a href="admin.php">Staff</a>
 			 <a href="gallery.php">Gallery</a>
 			 <a href="managecalendar.php">Calendar</a>
-			 <a class="active" href="managenotification.php">Notification</a>
-			 <a href="aboutus.php">About Us</a>
+			 <a href="managenotification.php">Notification</a>
+			 <a class="active" href="aboutus.php">About Us</a>
 			 <a href="logout.php">Log Out</a>
 		</div>
 
@@ -47,8 +47,8 @@
 			  <li><a href="admin.php">Staff</a></li>
 			  <li><a href="gallery.php">Gallery</a></li>
 			  <li><a href="managecalendar.php">Calendar</a></li>
-			  <li><a class="active" href="managenotification.php">Notification</a></li>
-			  <li><a href="aboutus.php">About Us</a></li>
+			  <li><a href="managenotification.php">Notification</a></li>
+			  <li><a class="active" href="aboutus.php">About Us</a></li>
 			  <li><a href="logout.php">Log Out</a></li>
 			</ul>
 			
@@ -59,12 +59,12 @@
 		
 		<div class="corner" style="background-color: brown;">
 			<h2 style="background-color: green;">	
-					<p class="cc" style="color:white;text-align:center;"><b>Add Notification</b></p>
+					<p class="cc" style="color:white;text-align:center;"><b>Add About Us</b></p>
 			</h2>
 					
 					<div style="color:white;text-align:;padding-left: 20px;">
 							
-						<a href="managenotification.php">
+						<a href="aboutus.php">
 							<button class = "submit" style = "background-color:green;color:white;border-radius:5px;">
 								Go Back
 							</button>
@@ -72,23 +72,28 @@
 					</div>
 
 					<div style="color:white;text-align:;padding-left:40px;">
-						<form name="addingnotification" method="post" action="addingnotification.php" enctype="multipart/form-data"
+						<form name="addingaboutus" method="post" action="addingaboutus.php" enctype="multipart/form-data"
 								 style="background-color:;text-align:;padding-bottom:0px;">
-							
-							<p><label style="color:white;">Description : <br>
-							<textarea name="description" placeholder="School will be closed on monday as pupils will be on a trip...." rows="10"></textarea>
-							</label></p>
 
 							<p><label style="color:white;">Catergory : <br>
 								<select name="catergory">
 								  <option value="not selected">***please select the catergory***</option>
-								  <option value="Urgent">Urgent</option>
-								  <option value="Normal">Normal</option>
+								  <option value="About Us">About Us</option>
+								  <option value="Admission">Admission</option>
+								  <option value="Day Care">Day Care</option>
+								  <option value="Mission Statement">Mission Statement</option>
+								  <option value="Nursery">Nursery</option>
+								  <option value="Primary">Primary</option>
+								  <option value="Welcome">Welcome</option>
 								</select>
 							</label></p>
 
-							<p><label style="color:white;">End Date : <br>
-								<input type="Date" name="date" id="date" placeholder="Year-Month-Day e.g <?php echo date("Y-m-d"); ?>" value="" min="" max=""/>
+							<p><label style="color:white;">Title : <br>
+								<input type="text" name="title" placeholder="Eligibility" id="title"/>
+							</label></p>
+
+							<p><label style="color:white;">Description : <br>
+							<textarea name="description" placeholder="Write whats going on Your here..." rows="10"></textarea>
 							</label></p>
 
 							<p><label style="color:white;">Associated File : <br>
@@ -104,7 +109,7 @@
 					</div>
 
 					<div style="color:white;text-align:right;padding:20px;">
-						<a href="managenotification.php">
+						<a href="aboutus.php">
 							<button class = "submit" style = "background-color:green;color:white;border-radius:5px;">
 								Go Back
 							</button>

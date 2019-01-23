@@ -23,8 +23,8 @@
 			 <a href="admin.php">Staff</a>
 			 <a href="gallery.php">Gallery</a>
 			 <a href="managecalendar.php">Calendar</a>
-			 <a class="active" href="managenotification.php">Notification</a>
-			 <a href="aboutus.php">About Us</a>
+			 <a href="managenotification.php">Notification</a>
+			 <a class="active" href="aboutus.php">About Us</a>
 			 <a href="logout.php">Log Out</a>
 		</div>
 
@@ -44,8 +44,8 @@
 			  <li><a href="admin.php">Staff</a></li>
 			  <li><a href="gallery.php">Gallery</a></li>
 			  <li><a href="managecalendar.php">Calendar</a></li>
-			  <li><a class="active" href="managenotification.php">Notification</a></li>
-			  <li><a href="aboutus.php">About Us</a></li>
+			  <li><a href="managenotification.php">Notification</a></li>
+			  <li><a class="active" href="aboutus.php">About Us</a></li>
 			  <li><a href="logout.php">Log Out</a></li>
 			</ul>
 			
@@ -56,7 +56,7 @@
 		
 		<div class="corner" style="background-color: brown;">
 			<h2 style="background-color: green;">	
-					<p class="cc" style="color:white;text-align:center;"><b>View Notification</b></p>
+					<p class="cc" style="color:white;text-align:center;"><b>View About Us</b></p>
 			</h2>
 					<!--<p style="color:white;text-align:center;">
 						<a href="admin.php">
@@ -67,53 +67,54 @@
 
 					<?php
 								//3.1.2 Checking the values are existing in the database or not
-							if (empty($_GET['notification'])) {
+							if (empty($_GET['aboutus'])) {
 								# code...
-								$notification = false;
+								$aboutus = false;
 							} else{
-								$id =  $_GET['notification'];
+								$id =  $_GET['aboutus'];
 
-								$select_notification = "SELECT * FROM notification WHERE id = ".$id;
+								$select_aboutus = "SELECT * FROM us WHERE id = ".$id;
 													 
-								$notification = mysqli_query($connection, $select_notification) or die(mysqli_error($connection));
-								$count = mysqli_num_rows($notification);
+								$aboutus = mysqli_query($connection, $select_aboutus) or die(mysqli_error($connection));
+								$count = mysqli_num_rows($aboutus);
 
 							}
 					?>	
 							
-					<?php if (!$notification): ?>
+					<?php if (!$aboutus): ?>
 						<p style="color:white;text-align:center;padding:20px;">
-							Sorry, No details of notification have been added yet.
+							Sorry, No details of About Us have been added yet.
 						</p>
 					<?php else: ?>
 						
 						<p style="color:white;text-align:;padding:px;">
 
 
-							<?php foreach ($notification as $notification): ?>
+							<?php foreach ($aboutus as $aboutus): ?>
 
 								<p style="color:white;text-align:;padding-left:20px;margin:40px;">
 
-									<p style="color:white;padding-left:20px;">Catergory: <?php echo e($notification['type']); ?></p>
-									<p style="color:white;padding-left:20px;">Description: <?php echo e($notification['description']); ?></p>
+									<p style="color:white;padding-left:20px;">Catergory: <?php echo e($aboutus['catergory']); ?></p>
+									<p style="color:white;padding-left:20px;">Title: <?php echo e($aboutus['title']); ?></p>
+									<p style="color:white;padding-left:20px;">Description: <?php echo e($aboutus['description']); ?></p>
 									<p style="color:white;padding-left:20px;">
 										<a href="download.php?file=<?php echo e($notification['filepath']);?>" style="color:purple;">
 
-											<?php echo e($notification['filename']);?><br>
+											<?php echo e($aboutus['filename']);?><br>
 											
 										</a>
 									</p>
-									<p style="color:white;padding-left:20px;">Date: <?php echo e($notification['day']); ?></p>
+									
 								</p>
 								<p style="color:white;text-align:center;">
-									<a href="managenotification.php">
+									<a href="aboutus.php">
 										<button class = "submit" style = "background-color:green;color:white;border-radius:5px;">Go Back</button>
 									</a>
-									<a href="deletenotification.php?notification=<?php echo $notification['id']; ?>">
+									<a href="deleteaboutus.php?aboutus=<?php echo $aboutus['id']; ?>">
 										<button class = "submit" style = "background-color:green;color:white;border-radius:5px;">Delete</button>
 									</a>
 									
-									<a href="editnotification.php?notification=<?php echo $notification['id']; ?>">
+									<a href="editaboutus.php?aboutus=<?php echo $aboutus['id']; ?>">
 										<button class = "submit" style = "background-color:green;color:white;border-radius:5px;">Edit</button>
 									</a>
 								</p>
