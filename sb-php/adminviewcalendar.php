@@ -24,6 +24,7 @@
 			 <a href="gallery.php">Gallery</a>
 			 <a class="active" href="managecalendar.php">Calendar</a>
 			 <a href="notification.html">Notification</a>
+			 <a href="aboutus.php">About Us</a>
 			 <a href="logout.php">Log Out</a>
 		</div>
 
@@ -44,6 +45,7 @@
 			  <li><a href="gallery.php">Gallery</a></li>
 			  <li><a class="active" href="managecalendar.php">Calendar</a></li>
 			  <li><a href="notification.html">Notification</a></li>
+			  <li><a href="aboutus.php">About Us</a></li>
 			  <li><a href="logout.php">Log Out</a></li>
 			</ul>
 			

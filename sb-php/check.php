@@ -16,17 +16,17 @@
 		if ($count == 1){
 
 			$_SESSION['username'] = $username;
+
+			foreach ($result as $login){
+
+				$_SESSION['title'] = $login['title'];
+
+			}
 			//3.1.4 if the user is logged in Greets the user with message
 			if (isset($_SESSION['username'])){
-			$session_name = $_SESSION['username'];
-			echo "Hi " . $session_name . "
-			";
-			echo "This is the Members Area
-			";
-			echo "<a href='logout.php'>Logout</a>";
 
-			header("location:admin.php");
-			//include "C:/xampp/htdocs/sb/sb-php/admin.php";
+				header("location:admin.php");
+				//include "C:/xampp/htdocs/sb/sb-php/admin.php";
 			 
 			}
 		}

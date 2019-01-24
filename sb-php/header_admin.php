@@ -47,7 +47,7 @@
 
 <body  style="background-color:gray;margin:20px;font-size:20px;" id="body" 
 <?php 
-	if (isset($_SESSION['changingstaff']) or isset($_SESSION['addingstaff']) or isset($_SESSION['changingcalendar']) or isset($_SESSION['addingcalendar']) or isset($_SESSION['changingnotification']) or isset($_SESSION['addingnotification']) or isset($_SESSION['changinggallery']) or isset($_SESSION['addinggallery']) or isset($_SESSION['changingfees']) or isset($_SESSION['addingfees']) or isset($_SESSION['changingaboutus']) or isset($_SESSION['addingaboutus']) ){ 
+	if (isset($_SESSION['changingstaff']) or isset($_SESSION['addingstaff']) or isset($_SESSION['changingcalendar']) or isset($_SESSION['addingcalendar']) or isset($_SESSION['changingnotification']) or isset($_SESSION['addingnotification']) or isset($_SESSION['changinggallery']) or isset($_SESSION['addinggallery']) or isset($_SESSION['changingfees']) or isset($_SESSION['addingfees']) or isset($_SESSION['changingaboutus']) or isset($_SESSION['addingaboutus']) or isset($_SESSION['changingadmin']) or isset($_SESSION['addingadmin']) ){ 
 ?>onload ="mybody()" >
 
 <script>
@@ -99,6 +99,14 @@ function mybody() {
 	<?php if (!empty($_SESSION['addingaboutus'])): ?>
 		window.alert("<?php echo $_SESSION['addingaboutus']; ?>");
 		<?php unset($_SESSION['addingaboutus']); // remove it now we have used it ?>
+	<?php endif; ?>
+	<?php if (!empty($_SESSION['changingadmin'])): ?>
+		window.alert("<?php echo $_SESSION['changingadmin']; ?>");
+		<?php unset($_SESSION['changingadmin']); // remove it now we have used it ?>
+	<?php endif; ?>
+	<?php if (!empty($_SESSION['addingadmin'])): ?>
+		window.alert("<?php echo $_SESSION['addingadmin']; ?>");
+		<?php unset($_SESSION['addingadmin']); // remove it now we have used it ?>
 	<?php endif; ?>
 	
 }

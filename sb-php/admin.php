@@ -62,13 +62,29 @@
 					<p class="cc" style="color:white;text-align:center;"><b>Manage Staff</b></p>
 			</h2>
 					<p style="color:white;text-align:center;">
-						
+
 						<a href="addstaff.php">
 							<button class = "submit" style = "background-color:green;color:white;border-radius:5px;">
 								Add Staff
 							</button>
 						</a>
-					</p>
+						
+						<?php if ($_SESSION['title'] == 'admin'): ?>
+
+							<a href="manageadmin.php">
+								<button class = "submit" style = "background-color:green;color:white;border-radius:5px;">
+									Admin
+								</button>
+							</a>
+
+						<?php endif;?>
+
+						<a href="settings.php">
+							<button class = "submit" style = "background-color:green;color:white;border-radius:5px;">
+								Settings
+							</button>
+						</a>
+				</p>
 
 					<?php
 								//3.1.2 Checking the values are existing in the database or not
